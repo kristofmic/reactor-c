@@ -9,7 +9,7 @@
     "test": "npm run lint && npm run test:client && npm run test:server",
     "test:client": "BABEL_ENV=test TEST_ENV=client MOCHA_FILE=./test/results/test-results.client.xml ./node_modules/.bin/istanbul cover --dir=./test/coverage/client -x=*.spec.js --report=cobertura --report=lcov ./node_modules/.bin/_mocha -- --compilers js:babel-core/register --reporter mocha-multi --reporter-options spec=-,mocha-junit-reporter=- ./test/jsdom.conf.js ./test/istanbul.conf.js ./test/mocha.conf.js \"./client/**/*.spec.js\"",
     "test:server": "CONFIG=dev BABEL_ENV=test TEST_ENV=server MOCHA_FILE=./test/results/test-results.server.xml ./node_modules/.bin/istanbul cover --dir=./test/coverage/server -x=*.spec.js --report=cobertura --report=lcov ./node_modules/.bin/_mocha -- --compilers js:babel-core/register --reporter mocha-multi --reporter-options spec=-,mocha-junit-reporter=- ./test/conf.js ./test/istanbul.conf.js ./test/mocha.conf.js \"./controllers/**/*.spec.js\" \"./lib/**/*.spec.js\"",
-    "build": "npm run clean && npm run build:dev && npm run build:dist && npm run copy && npm run upload",
+    "build": "npm run clean && npm run build:dev && npm run build:dist && npm run copy",
     "build:dev": "./node_modules/.bin/webpack --progress --colors",
     "build:dist": "./node_modules/.bin/webpack -p --progress --colors --bail",
     "build:watch": "./node_modules/.bin/webpack --progress --colors -w",
@@ -19,8 +19,7 @@
     "clean:public": "rm -rf ./public",
     "lint": "npm run lint:client && npm run lint:server",
     "lint:client": "./node_modules/.bin/eslint client --ext=js --ext=jsx",
-    "lint:server": "./node_modules/.bin/eslint controllers lib server.js",
-    "upload": "node ./bin/upload.js"
+    "lint:server": "./node_modules/.bin/eslint controllers lib server.js"
   },
   "repository": {
     "type": "git",
@@ -58,7 +57,6 @@
     "react-addons-test-utils": "15.3.2",
     "redux-devtools": "3.3.1",
     "sass-loader": "4.0.2",
-    "s3_asset_upload": "git+https://bc7bbb40fa72b9b19dc325d90ce6617f7c054b5b@github.atl.pdrop.net/UI/s3_asset_upload#1.1.1",
     "sinon": "1.17.6",
     "sinon-chai": "2.8.0",
     "style-loader": "0.13.1",

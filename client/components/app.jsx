@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 
-let navbarHeaderUrl;
-
 if (process.env.BROWSER) {
   require('./app.scss');
 }

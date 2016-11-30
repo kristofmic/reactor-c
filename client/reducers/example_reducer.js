@@ -26,11 +26,18 @@ const INITIAL_STATE = new Map({
   message: ''
 });
 
-const exampleReducer = {
-  [FETCH_EXAMPLE_MESSAGE]: fetchExampleMessage,
-  [UPDATE_EXAMPLE_MESSAGE]: updateMetricNames,
-  [FETCH_EXAMPLE_MESSAGE_ERROR]: fetchExampleMessageError
-};
+function exampleReducer(state = INITIAL_STATE, action) {
+  switch (action.type) {
+    case FETCH_EXAMPLE_MESSAGE:
+      return fetchExampleMessage(state, action.payload);
+    case UPDATE_EXAMPLE_MESSAGE:
+      return updateExampleMessage(state, action.payload);
+    case FETCH_EXAMPLE_MESSAGE_ERROR:
+      return fetchExampleMessageError(state, action.payload);
+    default:
+      return state;
+  }
+}
 
 function fetchExampleMessage(state) {
   return state.merge({
@@ -40,7 +47,7 @@ function fetchExampleMessage(state) {
   });
 }
 
-function updateMetricNames(state, { message }) {
+function updateExampleMessage(state, { message }) {
   return state.merge({
     isFetching: false,
     lastUpdated: new Date(),
@@ -56,4 +63,4 @@ function fetchExampleMessageError(state, { message = '' }) {
   });
 }
 
-export default reducerFactory(exampleReducer, INITIAL_STATE);
+export default exampleReducer;

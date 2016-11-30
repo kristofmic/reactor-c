@@ -15,12 +15,10 @@ build:
 
 tag:
 	echo "Running ${@}"
-	docker tag ${IMAGE} ${IMAGEORG}/${IMAGE}:${BRANCH_NAME}
 	docker tag ${IMAGE} ${IMAGEORG}/${IMAGE}:$(TAG)
 
 push: tag
 	echo "Running ${@}"
-	docker push ${IMAGEORG}/${IMAGE}:${BRANCH_NAME}
 	docker push ${IMAGEORG}/${IMAGE}:$(TAG)
 
 test:
