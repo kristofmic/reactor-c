@@ -1,9 +1,8 @@
 .PHONY: run clean test build tag push
 
-IMAGEORG ?= ccdfas
+IMAGEREPO ?= 118541355989.dkr.ecr.us-east-1.amazonaws.com
 IMAGE ?= reactor-c
 TAG = $(shell git ls-files -s . | shasum - | awk '{print $$1}')
-PORT=8080
 
 clean:
 	echo "Running ${@}"
@@ -15,11 +14,11 @@ build:
 
 tag:
 	echo "Running ${@}"
-	docker tag ${IMAGE} ${IMAGEORG}/${IMAGE}:$(TAG)
+	docker tag ${IMAGE} ${IMAGEREPO}/${IMAGE}:$(TAG)
 
 push: tag
 	echo "Running ${@}"
-	docker push ${IMAGEORG}/${IMAGE}:$(TAG)
+	docker push ${IMAGEREPO}/${IMAGE}:$(TAG)
 
 test:
 	echo "Running ${@}"
@@ -27,4 +26,4 @@ test:
 
 run:
 	echo "Running ${@}"
-	docker run -d -p ${PORT}:${PORT} -e PORT=${PORT} -e CONFIG=${DEPLOY_ENV} --name ${IMAGE} ${IMAGEORG}/${IMAGE}:${TAG}
+	docker run -d -p ${PORT}:${PORT} -e PORT=${PORT} -e CONFIG=${CONFIG} -e NODE_ENV=${NODE_ENV} --name ${IMAGE} ${IMAGEREPO}/${IMAGE}:${TAG}

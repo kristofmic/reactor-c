@@ -20,7 +20,4 @@ RUN npm install
 COPY . /reactor
 RUN npm run build
 
-# Start web server
-EXPOSE 8080
-
 CMD ["node", "./www"]
