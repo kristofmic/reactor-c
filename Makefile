@@ -1,6 +1,6 @@
 .PHONY: run clean test build tag push
 
-IMAGEREPO ?= 118541355989.dkr.ecr.us-east-1.amazonaws.com
+IMAGEREPO ?= chourihan
 IMAGE ?= reactor-c
 TAG = $(shell git ls-files -s . | shasum - | awk '{print $$1}')
 

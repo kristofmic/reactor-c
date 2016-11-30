@@ -34,7 +34,7 @@ class Example extends React.PureComponent {
             <p className="message">{message}</p>
           )}
           {(!message && !isFetching && !hasError) && (
-            <button type="button" className="button button-default" onClick={this.fetchMessage}>
+            <button type="button" className="btn btn-primary" onClick={this.fetchMessage}>
               Fetch Message
             </button>
           )}
