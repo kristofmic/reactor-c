@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- Basic Page Needs
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <title>Reactor C</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <!-- IE
+    __________________________________________________ -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Mobile Specific Metas
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <% if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') { %>
+      <link href="/public/<%= clientCssBundle %>" rel="stylesheet"/>
+    <% } else { %>
+      <link href="/public/css/client.bundle.css" rel="stylesheet"/>
+    <% } %>
+
+    <!-- Favicon
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  </head>
+  <body>
+
+    <!-- Primary Page Layout
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div id="error" class="container">
+      <div><strong>Status:</strong> <%= status %></div>
+      <div><strong>Message:</strong> <%= message %></div>
+    </div>
+
+    <!-- Scripts
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!-- End Document
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  </body>
+</html

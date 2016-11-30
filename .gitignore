@@ -1,0 +1,14 @@
+logs
+*.log
+pids
+*.pid
+*.seed
+test/coverage
+test/results
+.lock-wscript
+node_modules
+public
+.DS_Store
+*.swp
+vm/.vagrant
+npm-debug.log
