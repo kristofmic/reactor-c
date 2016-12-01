@@ -1,0 +1,6 @@
+apps:
+  - script: './www'
+    name: 'reactor-c'
+    exec_mode: 'cluster'
+    instances: 2
+    max_memory_restart: '150M'

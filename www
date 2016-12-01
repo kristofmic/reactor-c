@@ -6,18 +6,9 @@ const conf = require('node-env-conf');
 conf.init({ env: 'CONFIG' });
 
 const server = require('./server').default;
-const clusterProcess = require('./cluster').default;
 
-if (conf.get('cluster')) {
-  clusterProcess(startServer);
-} else {
-  startServer();
-}
+server.set('port', process.env.PORT || 8080);
 
-function startServer() {
-  server.set('port', process.env.PORT || 8080);
-
-  server.listen(server.get('port'), () => {
-    console.log(`Express server listening on port ${server.get('port')}`);
-  });
-}
+server.listen(server.get('port'), () => {
+  console.log(`Express server listening on port ${server.get('port')}`);
+});

@@ -8,6 +8,7 @@ RUN cd $(npm root -g)/npm \
 # Install global dependencies
 RUN npm install -g npm@3.10.7 &&\
   npm set progress=false &&\
+  npm install -g pm2 &&\
   mkdir -p /reactor
 
 # Copy package.json, change working directory
@@ -20,4 +21,4 @@ RUN npm install
 COPY . /reactor
 RUN npm run build
 
-CMD ["node", "./www"]
+CMD ["pm2-docker", "process.yml"]
