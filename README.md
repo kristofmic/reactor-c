@@ -24,3 +24,9 @@ To run the server, simply run the `yarn start` command. The server starts on por
 
 ## Running the tests
 To run the tests, simply run the `yarn test` command. The `yarn test` command will run tests for both the client- and server-side components, though note that the tests do run independently.
+
+## TODO
+- [] server render the app
+- [] update to webpack 2
+- [] update react router
+- [] test out (and possibly implement) Jest

@@ -1,2 +1,2 @@
 import conf from 'node-env-conf';
-conf.init();
+conf.init({ env: 'CONFIG' });

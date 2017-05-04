@@ -6,13 +6,11 @@ const router = new express.Router();
 router.get('/', getExample);
 
 function getExample(req, res) {
-  setTimeout(() => {
-    if (req.query.err) {
-      handleError(res)(new Error('Oops! Something went wrong :('));
-    } else {
-      handleSuccess(res)({ message: 'Hello world' });
-    }
-  }, 400);
+  if (req.query.err) {
+    handleError(res)(new Error('Oops! Something went wrong :('));
+  } else {
+    handleSuccess(res)({ message: 'Hello world' });
+  }
 }
 
 export default router;

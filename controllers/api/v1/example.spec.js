@@ -1,4 +1,4 @@
-import example from './example';
+import example, { __RewireAPI__ } from './example';
 
 describe('example controller', function() {
   let reqStub;
@@ -13,23 +13,23 @@ describe('example controller', function() {
     reqStub = { query: {} };
     resStub = {};
 
-    handleSuccessStub.reset();
-    handleErrorStub.reset();
-    responseHandlerStub.reset();
+    handleSuccessStub.resetHistory();
+    handleErrorStub.resetHistory();
+    responseHandlerStub.resetHistory();
   });
 
   describe('getExample', function() {
     let getExample;
 
     before(function() {
-      example.__Rewire__('handleSuccess', handleSuccessStub);
-      example.__Rewire__('handleError', handleErrorStub);
-      getExample = example.__get__('getExample');
+      __RewireAPI__.__Rewire__('handleSuccess', handleSuccessStub);
+      __RewireAPI__.__Rewire__('handleError', handleErrorStub);
+      getExample = __RewireAPI__.__get__('getExample');
     });
 
     after(function() {
-      example.__ResetDependency__('handleSuccess');
-      example.__ResetDependency__('handleError')
+      __RewireAPI__.__ResetDependency__('handleSuccess');
+      __RewireAPI__.__ResetDependency__('handleError')
     });
 
     it('should respond with a message', function() {
@@ -43,7 +43,7 @@ describe('example controller', function() {
 
       getExample(reqStub, resStub);
 
-      expect(responseHandlerStub).to.have.been.calledWith(new Error('Oops! Something went wrong :('));
+      expect(responseHandlerStub.lastCall.args[0]).to.eql(new Error('Oops! Something went wrong :('));
     });
   });
 });
