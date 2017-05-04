@@ -1,15 +1,13 @@
 import { connect } from 'react-redux';
 
-import { fetchExampleMessage } from '../actions/example_action_creator';
+import { exampleActionCreator } from '../actions/example';
 
 function mapStateToProps({ example }) {
-  return example.toJS();
+  return example;
 }
 
 function mapDispatchToProps() {
-  return {
-    fetchExampleMessage
-  };
+  return exampleActionCreator;
 }
 
 const exampleContainer = connect(mapStateToProps, mapDispatchToProps);

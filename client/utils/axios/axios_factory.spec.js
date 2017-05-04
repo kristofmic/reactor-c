@@ -1,15 +1,14 @@
-import axiosFactory from './axios_factory';
+import axiosFactory, { __RewireAPI__ } from './axios_factory';
 
 describe('axiosFactory', function() {
-  const useStub = sinon.stub();
   const axiosInstance = {
+    defaults: {},
     interceptors: {
       response: {
-        use: useStub
+        use: sinon.stub()
       }
     }
   };
-  const baseConfigStub = { timeout: 2000 };
   const axiosStub = {
     create: sinon.stub()
   };
@@ -18,30 +17,27 @@ describe('axiosFactory', function() {
   let parseErrorData;
 
   before(function() {
-    axiosFactory.__Rewire__('axios', axiosStub);
-    axiosFactory.__Rewire__('BASE_CONFIG', baseConfigStub);
+    __RewireAPI__.__Rewire__('axios', axiosStub);
 
-    parseErrorData = axiosFactory.__get__('parseErrorData');
-    parseResponseData = axiosFactory.__get__('parseResponseData');
+    parseErrorData = __RewireAPI__.__get__('parseErrorData');
+    parseResponseData = __RewireAPI__.__get__('parseResponseData');
   });
 
   beforeEach(function() {
-    useStub.reset();
-    axiosStub.create.reset();
+    axiosInstance.interceptors.response.use.reset();
   });
 
   after(function() {
-    axiosFactory.__ResetDependency__('axios');
-    axiosFactory.__ResetDependency__('BASE_CONFIG');
+    __RewireAPI__.__ResetDependency__('axios');
   });
 
-  it('should create an axios instance with the base config and passed in base url', function() {
+  it('should create an axios instance for the passed in base url', function() {
     const instance = axiosFactory('/api/v1/foo');
 
     expect(instance).to.equal(axiosInstance);
+    expect(instance.defaults.timeout).to.equal(7000);
     expect(axiosStub.create).to.have.been.calledWith({
-      baseURL: '/api/v1/foo',
-      timeout: 2000
+      baseURL: '/api/v1/foo'
     });
   });
 
@@ -54,15 +50,14 @@ describe('axiosFactory', function() {
     expect(instance).to.equal(axiosInstance);
     expect(axiosStub.create).to.have.been.calledWith({
       baseURL: '/api/v1/foo',
-      foo: 'bar',
-      timeout: 2000
+      foo: 'bar'
     });
   });
 
   it('should setup a response interceptor', function() {
     const instance = axiosFactory('/api/v1/foo');
 
-    expect(useStub).to.have.been.calledWith(parseResponseData, parseErrorData);
+    expect(axiosInstance.interceptors.response.use).to.have.been.calledWith(parseResponseData, parseErrorData);
   });
 
   describe('parseResponseData()', function() {

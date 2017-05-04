@@ -1,7 +1,9 @@
 import health from './health';
 import main from './main';
-import exampleV1 from './v1/example';
+import exampleAPIv1 from './api/v1/example';
+import * as error from './error';
 
 export { health };
 export { main };
-export { exampleV1 };
+export { exampleAPIv1 };
+export { error };

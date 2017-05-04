@@ -12,3 +12,4 @@ public
 *.swp
 vm/.vagrant
 npm-debug.log
+yarn-error.log

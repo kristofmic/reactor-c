@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { exampleContainer } from '../../containers';
 
@@ -28,22 +29,24 @@ class Example extends React.PureComponent {
     } = this.props;
 
     return (
-      <div className="example container">
-        <div className="ten columns offset-by-one">
-          {(message && !isFetching && !hasError) && (
-            <p className="message">{message}</p>
-          )}
-          {(!message && !isFetching && !hasError) && (
-            <button type="button" className="btn btn-primary" onClick={this.fetchMessage}>
-              Fetch Message
-            </button>
-          )}
-          {(isFetching) && (
-            <p>Fetching...</p>
-          )}
-          {(hasError) && (
-            <p>{`Error: ${errorMessage}`}</p>
-          )}
+      <div className="example container-fluid">
+        <div className="row">
+          <div className="col">
+            {(message && !isFetching && !hasError) && (
+              <p className="message">{message}</p>
+            )}
+            {(!message && !isFetching && !hasError) && (
+              <button type="button" className="btn btn-primary" onClick={this.fetchMessage}>
+                Fetch Message
+              </button>
+            )}
+            {(isFetching) && (
+              <p>Fetching...</p>
+            )}
+            {(hasError) && (
+              <p>{`Error: ${errorMessage}`}</p>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -58,5 +61,4 @@ Example.propTypes = {
   message: PropTypes.string.isRequired
 };
 
-export { Example as ExampleClass };
 export default exampleContainer(Example);

@@ -30,8 +30,11 @@ server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'ejs');
 
 // Routes and controllers
-server.use('/v1/example', controllers.exampleV1);
+server.use('/api/v1/example', controllers.exampleAPIv1);
 server.use('/health', controllers.health);
+server.use('/error', controllers.error.error);
 server.use('/', controllers.main);
+server.use(controllers.error.notFound);
+server.use(controllers.error.handleError);
 
 export default server;

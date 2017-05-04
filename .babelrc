@@ -1,9 +1,9 @@
 {
-  "presets": ["es2015", "react"],
-  "plugins": ["transform-object-rest-spread"],
+  "presets": ["latest", "react"],
+  "plugins": ["transform-object-rest-spread", "transform-decorators-legacy"],
   "env": {
     "test": {
-      "plugins": ["transform-object-rest-spread", "rewire"]
+      "plugins": ["transform-object-rest-spread", "transform-decorators-legacy", "rewire"]
     }
   }
 }

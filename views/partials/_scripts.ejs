@@ -1,0 +1,13 @@
+<!-- Scripts
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<% if (locals.localData) { %>
+  <script>
+    window.__rc = window.__rc || {};
+
+    window.__rc.localData = '<%- JSON.stringify(locals.localData) %>';
+  </script>
+<% } %>
+
+<% js.forEach(function(bundle) { %>
+  <script type="text/javascript" src="/public/<%= bundle %>" charset="utf-8"></script>
+<% }); %>

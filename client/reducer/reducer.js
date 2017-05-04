@@ -1,12 +1,6 @@
-/* State tree
-  {
-    example: // see example reducer
-  }
-*/
-
 import { combineReducers } from 'redux';
 
-import exampleReducer from './example_reducer';
+import exampleReducer from './reducers/example_reducer';
 
 const reducer = combineReducers({
   example: exampleReducer,

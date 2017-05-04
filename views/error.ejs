@@ -5,7 +5,7 @@
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
-    <title>Reactor C</title>
+    <title>Reactor C | Error</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -22,27 +22,56 @@
 
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <% if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') { %>
-      <link href="/public/<%= clientCssBundle %>" rel="stylesheet"/>
-    <% } else { %>
-      <link href="/public/css/client.bundle.css" rel="stylesheet"/>
-    <% } %>
+    <link href="/public/<%= clientCssBundle %>" rel="stylesheet"/>
 
     <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <style>
+      html {
+        background: #fff;
+      }
+
+      .error-status {
+        color: rgba(0, 0, 0, .12);
+        font-size: 4rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      .error-status-definition {
+        text-align: center;
+      }
+
+      .error-message {
+        color: rgba(0, 0, 0, .56);
+        font-weight: 500;
+        text-align: center;
+      }
+    </style>
 
   </head>
   <body>
 
     <!-- Primary Page Layout
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div id="error" class="container">
-      <div><strong>Status:</strong> <%= status %></div>
-      <div><strong>Message:</strong> <%= message %></div>
+    <div id="error" class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <h1 class="error-status"><%= status %></h1>
+          <h5 class="error-status-definition"><%= statusDefinition %></h5>
+          <p class="error-message"><%= message %></p>
+        </div>
+      </div>
     </div>
 
     <!-- Scripts
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script>
+      console.log(<%- JSON.stringify(stack) %>);
+    </script>
+
     <!-- End Document
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   </body>

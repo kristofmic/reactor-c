@@ -1,65 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-    <!-- Basic Page Needs
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta charset="utf-8">
-    <title>Reactor C</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <!-- IE
-    __________________________________________________ -->
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <!-- Mobile Specific Metas
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- FONT
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-    <!-- CSS
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-    <% if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') { %>
-      <link href="/public/<%= clientCssBundle %>" rel="stylesheet"/>
-    <% } else { %>
-      <link href="/public/css/client.bundle.css" rel="stylesheet"/>
-    <% } %>
-
-    <!-- Favicon
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
+    <%- include('./partials/_head', { css: [clientCssBundle], title: 'Reactor C' })%>
 
     <!-- Third Party Javascript
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
   </head>
   <body>
+    <%- include ./partials/_entry %>
 
-    <!-- Primary Page Layout
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <% if (locals.body) { %>
-      <div id="entry">
-        <%-body-%>
-      </div>
-    <% } else { %>
-      <div id="entry"></div>
-    <% } %>
-
-    <!-- Scripts
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <% if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') { %>
-      <script type="text/javascript" src="/public/<%= vendorJsBundle %>" charset="utf-8"></script>
-      <script type="text/javascript" src="/public/<%= clientJsBundle %>" charset="utf-8"></script>
-    <% } else { %>
-      <script type="text/javascript" src="/public/js/vendor.bundle.js" charset="utf-8"></script>
-      <script type="text/javascript" src="/public/js/client.bundle.js" charset="utf-8"></script>
-    <% } %>
+    <%- include('./partials/_scripts', { js: [vendorJsBundle, clientJsBundle] }) %>
 
     <!-- End Document
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   </body>
-</html
+</html>

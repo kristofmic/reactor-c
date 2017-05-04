@@ -1,7 +1,4 @@
 import axios from 'axios';
-import _assign from 'lodash/assign';
-
-import BASE_CONFIG from './axios_config';
 
 import { DEFAULT_ERROR_MESSAGE } from '../../constants';
 
@@ -16,7 +13,8 @@ export default function axiosFactory(config) {
     instanceConfig = config || {};
   }
 
-  const instance = axios.create(_assign({}, BASE_CONFIG, instanceConfig));
+  const instance = axios.create(instanceConfig);
+  instance.defaults.timeout = 7000;
   instance.interceptors.response.use(parseResponseData, parseErrorData);
 
   return instance;
@@ -41,7 +39,7 @@ function parseErrorData(error = {}) {
     try {
       message = JSON.parse(resError.data).message;
     } catch (e) {
-      message = resError.data.message || error.message;
+      message = resError.data.errors[0].detail || error.message;
     }
   }
 

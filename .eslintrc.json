@@ -1,5 +1,6 @@
 {
   "extends": "airbnb",
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true
@@ -12,8 +13,11 @@
     "no-use-before-define": ["error", { "functions": false, "classes": true }],
     "no-plusplus": 0,
     "react/no-unused-prop-types": 1,
+    "react/require-default-props": 0,
     "jsx-a11y/no-static-element-interactions": 1,
     "react/forbid-prop-types": 1,
-    "global-require": 0
+    "global-require": 0,
+    "no-underscore-dangle": 0,
+    "import/prefer-default-export": 0
   }
 }

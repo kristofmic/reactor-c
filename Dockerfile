@@ -1,24 +1,24 @@
 FROM node:6.9
 
-# Fix bug https://github.com/npm/npm/issues/9863
-RUN cd $(npm root -g)/npm \
-  && npm install fs-extra \
-  && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs.move/ ./lib/utils/rename.js
+$ Install yarn
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+ENV PATH /root/.yarn/bin:$HOME/.yarn/bin:$PATH
 
 # Install global dependencies
-RUN npm install -g npm@3.10.7 &&\
-  npm set progress=false &&\
-  npm install -g pm2 &&\
-  mkdir -p /reactor
+RUN yarn global add pm2
 
-# Copy package.json, change working directory
-COPY ./package.json /reactor
+# Copy package.json and yarn.lock, change working directory
+RUN mkdir -p /reactor
+COPY ./package.json ./yarn.lock /reactor/
 WORKDIR /reactor
 
-RUN npm install
+RUN yarn
 
 # Bundle app source and build assets
 COPY . /reactor
-RUN npm run build
+RUN yarn run build
+
+#Expose web server
+EXPOSE 8080
 
 CMD ["pm2-docker", "process.yml"]
