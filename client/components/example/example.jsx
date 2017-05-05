@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 
 import { exampleContainer } from '../../containers';
 
+import { autobind } from '../../utils/autobind';
+import { compose } from '../../utils/compose';
+
 if (process.env.BROWSER) {
   require('./example.scss');
 }
 
+@compose(exampleContainer)
 class Example extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.fetchMessage = this.fetchMessage.bind(this);
-  }
-
+  @autobind
   fetchMessage() {
     const { fetchExampleMessage } = this.props;
 
@@ -53,7 +52,7 @@ class Example extends React.PureComponent {
   }
 }
 
-Example.propTypes = {
+Example.WrappedComponent.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   fetchExampleMessage: PropTypes.func.isRequired,
   hasError: PropTypes.bool.isRequired,
@@ -61,4 +60,4 @@ Example.propTypes = {
   message: PropTypes.string.isRequired
 };
 
-export default exampleContainer(Example);
+export default Example;
