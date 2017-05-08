@@ -1,5 +1,7 @@
 import http from 'http';
 
+import logger from '../lib/logger';
+
 const manifest = require('../public/manifest.json');
 
 export function error(req, res, next) {
@@ -22,13 +24,14 @@ export function handleError(err, req, res, next) { // eslint-disable-line no-unu
   const message = err.message || http.STATUS_CODES[500];
   const stack = process.env.NODE_ENV !== 'production' ? err.stack : '';
 
-  res
-    .format({
-      default: resHTML,
-      html: resHTML,
-      json: resJSON,
-      text: resJSON
-    });
+  logger.log('error', err.stack);
+
+  res.format({
+    default: resHTML,
+    html: resHTML,
+    json: resJSON,
+    text: resJSON
+  });
 
   function resHTML() {
     res.status(status).render('error.ejs', {

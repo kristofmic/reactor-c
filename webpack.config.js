@@ -36,7 +36,7 @@ const common = {
       'react-transition-group',
       'redux'
     ],
-    client: path.join(__dirname, 'client', 'entry.js')
+    client: path.join(__dirname, 'client', 'entry.jsx')
   },
   output: {
     path: path.join(__dirname, 'public'),

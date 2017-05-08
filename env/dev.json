@@ -1,3 +1,4 @@
 {
-  "health": "dev"
+  "health": "dev",
+  "serverRender": true
 }

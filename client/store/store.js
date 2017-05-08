@@ -1,7 +1,9 @@
-import { createStore } from 'redux';
+import { createStore as createReduxStore } from 'redux';
 
 import reducer from '../reducer';
 
-const store = createStore(reducer);
+export function createStore() {
+  return createReduxStore(reducer);
+}
 
-export default store;
+export default createStore();

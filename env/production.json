@@ -1,3 +1,4 @@
 {
-  "health": "production"
+  "health": "production",
+  "serverRender": true
 }
