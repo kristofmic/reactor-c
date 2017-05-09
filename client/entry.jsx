@@ -9,11 +9,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import router from './route/router';
-import store from './store';
+import { createStore } from './store';
 
 if (process.env.BROWSER) {
   require('./styles/index.scss');
 }
+
+const store = createStore();
 
 const entry = (
   <Provider store={store}>
