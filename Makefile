@@ -11,7 +11,7 @@ clean:
 
 build:
 	echo "Running ${@}"
-	-t ${IMAGE} -t ${IMAGEREPO}/${IMAGE}:${TAG} .
+	docker build -t ${IMAGE} -t ${IMAGEREPO}/${IMAGE}:${TAG} .
 
 push:
 	echo "Running ${@}"

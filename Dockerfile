@@ -1,8 +1,8 @@
-FROM node:6.9
+FROM node:6.10
 
-$ Install yarn
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
-ENV PATH /root/.yarn/bin:$HOME/.yarn/bin:$PATH
+#$ Install yarn
+#RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+#ENV PATH /root/.yarn/bin:$HOME/.yarn/bin:$PATH
 
 # Install global dependencies
 RUN yarn global add pm2
