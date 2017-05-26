@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { exampleContainer } from '../../containers';
+import { exampleHOC } from '../../hocs';
 
 import { autobind } from '../../utils/autobind';
 import { compose } from '../../utils/compose';
@@ -10,7 +10,7 @@ if (process.env.BROWSER) {
   require('./example.scss');
 }
 
-@compose(exampleContainer)
+@compose(exampleHOC)
 class Example extends React.PureComponent {
   @autobind
   fetchMessage() {

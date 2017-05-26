@@ -11,6 +11,6 @@ function mapStateToProps({ example }) {
 // will receive dispatch as an argument and can be used accordingly.
 const mapDispatchToProps = exampleActionCreator;
 
-const exampleContainer = connect(mapStateToProps, mapDispatchToProps);
+const exampleHOC = connect(mapStateToProps, mapDispatchToProps);
 
-export default exampleContainer;
+export default exampleHOC;
