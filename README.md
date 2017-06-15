@@ -29,3 +29,5 @@ To run the tests, simply run the `yarn test` command. The `yarn test` command wi
 - [ ] update to webpack 2
 - [ ] update react router
 - [ ] test out (and possibly implement) Jest
+- [ ] check out CSS Modules
+- [ ] implement stylelint
