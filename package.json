@@ -17,7 +17,7 @@
     "copy:images": "cp -r ./client/images/. ./public/img/",
     "clean": "yarn run clean:public",
     "clean:public": "rm -rf ./public",
-    "lint": "yarn run lint:client && yarn run lint:server",
+    "lint": "yarn run stylelint && yarn run lint:client && yarn run lint:server",
     "lint:client": "./node_modules/.bin/eslint --fix client --ext=js --ext=jsx",
     "lint:server": "./node_modules/.bin/eslint --fix controllers lib server.js",
     "stylelint": "./node_modules/.bin/stylelint client/**/*.scss --fix --syntax scss",
