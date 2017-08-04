@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./www",
     "start:dev": "CONFIG=dev ./node_modules/.bin/nodemon ./www",
-    "test": "yarn run lint && yarn run test:client && yarn run test:server",
+    "test": "yarn run lint && yarn run test:client && yarn run test:server && yarn run validateConfig",
     "test:client": "BABEL_ENV=test TEST_ENV=client MOCHA_FILE=./test/results/test-results.client.xml ./node_modules/.bin/istanbul cover --dir=./test/coverage/client -x=*.spec.js --report=cobertura --report=lcov ./node_modules/.bin/_mocha -- --compilers js:babel-core/register --reporter mocha-multi --reporter-options spec=-,mocha-junit-reporter=- ./test/jsdom.conf.js ./test/istanbul.conf.js ./test/mocha.conf.js \"./client/**/*.spec.js\"",
     "test:server": "CONFIG=dev BABEL_ENV=test TEST_ENV=server MOCHA_FILE=./test/results/test-results.server.xml ./node_modules/.bin/istanbul cover --dir=./test/coverage/server -x=*.spec.js --report=cobertura --report=lcov ./node_modules/.bin/_mocha -- --compilers js:babel-core/register --reporter mocha-multi --reporter-options spec=-,mocha-junit-reporter=- ./test/conf.js ./test/istanbul.conf.js ./test/mocha.conf.js \"./controllers/**/*.spec.js\" \"./lib/**/*.spec.js\"",
     "build": "yarn run clean && yarn run build:dist && yarn run copy",
@@ -20,6 +20,7 @@
     "lint": "yarn run lint:client && yarn run lint:server",
     "lint:client": "./node_modules/.bin/eslint --fix client --ext=js --ext=jsx",
     "lint:server": "./node_modules/.bin/eslint --fix controllers lib server.js",
+    "stylelint": "./node_modules/.bin/stylelint client/**/*.scss --fix --syntax scss",
     "validateConfig": "node ./bin/validate_env.js"
   },
   "repository": {
@@ -65,6 +66,8 @@
     "sinon": "3.0.0",
     "sinon-chai": "2.12.0",
     "style-loader": "0.18.2",
+    "stylelint": "8.0.0",
+    "stylelint-config-standard": "17.0.0",
     "url-loader": "0.5.9",
     "webpack": "3.4.1",
     "webpack-bundle-analyzer": "2.9.0",
