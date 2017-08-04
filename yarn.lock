@@ -1397,7 +1397,7 @@ colors@1.0.x:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
 
-colors@^1.1.0, colors@~1.1.2:
+colors@1.1.2, colors@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
 
@@ -4273,10 +4273,6 @@ lodash@4.17.4, "lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.1.0, lodash@^4.13.1, 
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-lodash@^3.8.0:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
-
 lodash@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-1.0.2.tgz#8f57560c83b59fc270bd3d561b690043430e2551"
@@ -4628,12 +4624,12 @@ nocache@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/nocache/-/nocache-2.0.0.tgz#202b48021a0c4cbde2df80de15a17443c8b43980"
 
-node-env-conf@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/node-env-conf/-/node-env-conf-2.0.0.tgz#75958bfc7ff05dfc551a0fe1e515025a3ba945d7"
+node-env-conf@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/node-env-conf/-/node-env-conf-3.0.0.tgz#0613ba6e9a0601ad208a8983fb70ba81ab3878fd"
   dependencies:
-    colors "^1.1.0"
-    lodash "^3.8.0"
+    colors "1.1.2"
+    lodash "4.17.4"
     nconf "0.8.4"
 
 node-fetch@^1.0.1:
