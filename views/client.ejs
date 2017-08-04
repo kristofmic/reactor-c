@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/_head', { css: [clientCssBundle], title: 'Reactor C' })%>
+
+<head>
+  <%- include('./partials/_head', { css: css, title: 'Reactor C' })%>
 
     <!-- Third Party Javascript
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  </head>
-  <body>
-    <%- include ./partials/_entry %>
+</head>
 
-    <%- include('./partials/_scripts', { js: [vendorJsBundle, clientJsBundle] }) %>
+<body>
+  <%- include ./partials/_entry %>
 
-    <!-- End Document
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  </body>
+    <%- include('./partials/_scripts', { js: js }) %>
+
+      <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+
 </html>

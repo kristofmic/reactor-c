@@ -5,7 +5,7 @@ import reducerFactory from '../reducer_factory';
 import {
   FETCH_EXAMPLE_MESSAGE,
   FETCH_EXAMPLE_MESSAGE_ERROR,
-  UPDATE_EXAMPLE_MESSAGE
+  UPDATE_EXAMPLE_MESSAGE,
 } from '../../constants';
 
 const INITIAL_STATE = {
@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   hasError: false,
   errorMessage: '',
   lastUpdated: null,
-  message: ''
+  message: '',
 };
 
 const exampleReducer = {
@@ -26,31 +26,31 @@ function fetchExampleMessage(state) {
   return update(state, { $merge: {
     isFetching: true,
     hasError: false,
-    errorMessage: ''
+    errorMessage: '',
   } });
 }
 
 function updateExampleMessage(state, payload = {}) {
   const {
-    message
+    message,
   } = payload;
 
   return update(state, { $merge: {
     isFetching: false,
     lastUpdated: new Date(),
-    message
+    message,
   } });
 }
 
 function fetchExampleMessageError(state, payload) {
   const {
-    message: errorMessage
+    message: errorMessage,
   } = payload;
 
   return update(state, { $merge: {
     isFetching: false,
     hasError: true,
-    errorMessage
+    errorMessage,
   } });
 }
 

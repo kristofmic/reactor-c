@@ -1,8 +1,12 @@
 /* eslint no-param-reassign: 0 */
 
 export default function autobindMethods(functionKeys, thisArg) {
-  if (!(functionKeys instanceof Array)) { return; }
-  if (!thisArg) { return; }
+  if (!(functionKeys instanceof Array)) {
+    return;
+  }
+  if (!thisArg) {
+    return;
+  }
 
   functionKeys.forEach((key) => {
     if (typeof thisArg[key] !== 'function') {
@@ -34,16 +38,18 @@ export function autobind(target, name, desc) {
       Object.defineProperty(this, name, {
         configurable: true,
         writable: true,
-        value: method.bind(this)
+        value: method.bind(this),
       });
 
       isBinding = false;
 
       return this[name];
-    }
+    },
   };
 }
 
 function nonFunctionPropertyWarning(methodName, componentName) {
-  console.warn(`Trying to bind non-function property ${methodName} to React component ${componentName}`);
+  console.warn(
+    `Trying to bind non-function property ${methodName} to React component ${componentName}`,
+  );
 }

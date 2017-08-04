@@ -14,7 +14,7 @@ function App({ children }) {
 }
 
 App.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default App;

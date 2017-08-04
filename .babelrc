@@ -1,9 +1,21 @@
 {
-  "presets": ["latest", "react"],
-  "plugins": ["transform-object-rest-spread", "transform-decorators-legacy"],
+  "presets": [
+    "latest",
+    "react"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "transform-decorators-legacy",
+    "transform-object-rest-spread"
+  ],
   "env": {
     "test": {
-      "plugins": ["transform-object-rest-spread", "transform-decorators-legacy", "rewire"]
+      "plugins": [
+        "rewire",
+        "transform-class-properties",
+        "transform-decorators-legacy",
+        "transform-object-rest-spread"
+      ]
     }
   }
 }

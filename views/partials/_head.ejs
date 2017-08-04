@@ -1,7 +1,9 @@
 <!-- Basic Page Needs
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <meta charset="utf-8">
-<title><%- title %></title>
+<title>
+  <%- title %>
+</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,13 +18,8 @@ __________________________________________________ -->
 <!-- FONT
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-<!-- CSS
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<% css.forEach(function(bundle) { %>
-  <link href="/public/<%= bundle %>" rel="stylesheet"/>
-<% }); %>
+<%- include('./_styles.ejs', { css: css })%>
 
-<!-- Favicon
+  <!-- Favicon
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<link rel="icon" type="image/png" href="/public/img/favicon.png">
-
+  <link rel="icon" type="image/png" href="/public/img/favicon.png">

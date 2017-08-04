@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from 'reactor-blocks/package/components/button';
+import { Container, Column, Row } from 'reactor-blocks/package/layout/grid';
+
 import { exampleHOC } from '../../hocs';
 
 import { autobind } from '../../utils/autobind';
 import { compose } from '../../utils/compose';
+import rc from '../../utils/render_conditional';
 
 if (process.env.BROWSER) {
   require('./example.scss');
@@ -24,30 +28,27 @@ class Example extends React.PureComponent {
       errorMessage,
       hasError,
       isFetching,
-      message
+      message,
     } = this.props;
 
     return (
-      <div className="example container-fluid">
-        <div className="row">
-          <div className="col">
-            {(message && !isFetching && !hasError) && (
+      <Container className="example" fluid>
+        <Row>
+          <Column>
+            {rc((message && !hasError), () => (
               <p className="message">{message}</p>
-            )}
-            {(!message && !isFetching && !hasError) && (
-              <button type="button" className="btn btn-primary" onClick={this.fetchMessage}>
+            ))}
+            {rc((!message && !hasError), () => (
+              <Button type="primary" loading={isFetching} onClick={this.fetchMessage}>
                 Fetch Message
-              </button>
-            )}
-            {(isFetching) && (
-              <p>Fetching...</p>
-            )}
-            {(hasError) && (
+              </Button>
+            ))}
+            {rc(hasError, () => (
               <p>{`Error: ${errorMessage}`}</p>
-            )}
-          </div>
-        </div>
-      </div>
+            ))}
+          </Column>
+        </Row>
+      </Container>
     );
   }
 }
@@ -57,7 +58,7 @@ Example.WrappedComponent.propTypes = {
   fetchExampleMessage: PropTypes.func.isRequired,
   hasError: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  message: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired,
 };
 
 export default Example;

@@ -37,11 +37,13 @@ function defaultRoute(req, res, next) {
 }
 
 function renderDefaultRoute(res, locals) {
-  res.status(200).render('client.ejs', Object.assign({}, locals, {
-    clientCssBundle: manifest['client.css'],
-    clientJsBundle: manifest['client.js'],
-    vendorJsBundle: manifest['vendor.js']
-  }));
+  res.status(200).render(
+    'client.ejs',
+    Object.assign({}, locals, {
+      css: [manifest['client.css']],
+      js: [manifest['runtime.js'], manifest['vendor.js'], manifest['client.js']],
+    }),
+  );
 }
 
 export default router;

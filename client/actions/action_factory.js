@@ -17,7 +17,7 @@ export default function actionFactory(type, transform = _nthArg()) {
 
     return {
       type,
-      payload: transformFunc(payload)
+      payload: transformFunc(payload),
     };
   }
 

@@ -9,7 +9,7 @@ router.get('/', getHealth);
 
 function getHealth(req, res) {
   res.status(200).json({
-    message: HEALTH_MESSAGE
+    message: HEALTH_MESSAGE,
   });
 }
 

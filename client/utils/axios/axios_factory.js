@@ -7,7 +7,7 @@ export default function axiosFactory(config) {
 
   if (typeof config === 'string') {
     instanceConfig = {
-      baseURL: config
+      baseURL: config,
     };
   } else {
     instanceConfig = config || {};

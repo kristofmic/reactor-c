@@ -3,7 +3,7 @@ import actionFactory from '../action_factory';
 import {
   FETCH_EXAMPLE_MESSAGE,
   FETCH_EXAMPLE_MESSAGE_ERROR,
-  UPDATE_EXAMPLE_MESSAGE
+  UPDATE_EXAMPLE_MESSAGE,
 } from '../../constants';
 
 export const fetchExampleMessage = actionFactory(FETCH_EXAMPLE_MESSAGE);

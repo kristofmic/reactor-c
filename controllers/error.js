@@ -30,7 +30,7 @@ export function handleError(err, req, res, next) { // eslint-disable-line no-unu
     default: resHTML,
     html: resHTML,
     json: resJSON,
-    text: resJSON
+    text: resJSON,
   });
 
   function resHTML() {
@@ -39,7 +39,7 @@ export function handleError(err, req, res, next) { // eslint-disable-line no-unu
       status,
       statusDefinition,
       message,
-      stack
+      stack,
     });
   }
 
@@ -49,8 +49,8 @@ export function handleError(err, req, res, next) { // eslint-disable-line no-unu
         detail: message,
         status,
         statusDefinition,
-        stack
-      }]
+        stack,
+      }],
     });
   }
 }
